@@ -77,4 +77,19 @@ public class PedidosController : ControllerBase
             pedido.CodigoPedido
         });
     }
+    [HttpPost("seed")]
+public async Task<IActionResult> Seed()
+{
+    if (!db.Pizzas.Any())
+    {
+        db.Pizzas.AddRange(
+            new Pizza { Sku = "pep", Nombre = "Pepperoni", Descripcion = "Pepperoni y queso extra", PrecioPersonal = 4, PrecioMediana = 7, PrecioFamiliar = 9 },
+            new Pizza { Sku = "mar", Nombre = "Margarita", Descripcion = "Tomate, mozzarella, albahaca", PrecioPersonal = 5, PrecioMediana = 8, PrecioFamiliar = 10 },
+            new Pizza { Sku = "4q", Nombre = "4 Quesos", Descripcion = "Mozzarella, gorgonzola, parmesano, ricotta", PrecioPersonal = 6, PrecioMediana = 9, PrecioFamiliar = 11 }
+        );
+        await db.SaveChangesAsync();
+        return Ok("Pizzas insertadas correctamente");
+    }
+    return Ok("Las pizzas ya existen");
+}
 }
