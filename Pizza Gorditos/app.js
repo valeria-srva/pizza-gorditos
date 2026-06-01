@@ -189,7 +189,6 @@ function enviarPedido(e){
   if($('#pago').value==='online'){ abrirHojaPago(); }
   else{ realizarPedido(); }
 }
-function realizarPedido(){
 async function guardarPedidoEnBaseDeDatos(pedido) {
   const respuesta = await fetch("https://pizza-gorditos-production.up.railway.app/api/pedidos", {
     method: "POST",
@@ -206,6 +205,8 @@ async function guardarPedidoEnBaseDeDatos(pedido) {
 
   return await respuesta.json();
 }
+
+function realizarPedido(){
   const totales=calcular();
 
   const pedido={
