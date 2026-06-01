@@ -191,7 +191,7 @@ function enviarPedido(e){
 }
 function realizarPedido(){
 async function guardarPedidoEnBaseDeDatos(pedido) {
-  const respuesta = await fetch("https://localhost:5192/api/pedidos", {
+  const respuesta = await fetch("https://pizza-gorditos-production.up.railway.app/api/pedidos", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
