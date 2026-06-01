@@ -29,7 +29,8 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<PizzaGorditosDbContext>();
-    db.Database.Migrate();
+    db.Database.ExecuteSqlRaw("DROP TABLE IF EXISTS \"__EFMigrationsHistory\";");
+    db.Database.EnsureCreated();
 
     if (!db.Pizzas.Any())
     {
