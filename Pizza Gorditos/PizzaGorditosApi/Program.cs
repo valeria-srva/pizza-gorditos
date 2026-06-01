@@ -4,7 +4,7 @@ using PizzaGorditosApi.Data;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<PizzaGorditosDbContext>(options =>
-    options.UseSqlite("Data Source=pizzagorditos.db"));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("PizzaGorditosConnection"));
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirFrontend", policy =>
