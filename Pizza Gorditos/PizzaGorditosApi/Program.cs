@@ -13,12 +13,11 @@ builder.Services.AddCors(options =>
     options.AddPolicy("PermitirFrontend", policy =>
     {
         policy
-            .AllowAnyOrigin()
+            .WithOrigins("https://stately-starlight-7386e8.netlify.app")
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
 });
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
