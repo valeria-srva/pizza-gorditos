@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<PizzaGorditosDbContext>(options =>
-    options.UseSqlite("Data Source=pizzagorditos.db");
+    options.UseSqlite("Data Source=pizzagorditos.db"));
 
 builder.Services.AddCors(options =>
 {
