@@ -220,14 +220,18 @@ function realizarPedido(){
       municipio:'San Salvador'
     },
     pago:$('#pago').value,
-    items: estado.carrito.map(item => ({
-      sku: item.id,
-      nombre: item.nombre,
-      tamano: item.size,
-      cantidad: item.qty,
-      precioUnitario: item.unidad,
-      subtotalLinea: item.qty * item.unidad
-    })),
+   items: estado.carrito.map(item => {
+  const pizza = MENU.find(x => x.id === item.id);
+  const precio = pizza.precios[item.size];
+  return {
+    sku: item.id,
+    nombre: pizza.nombre,
+    tamano: item.size,
+    cantidad: item.qty,
+    precioUnitario: precio,
+    subtotalLinea: item.qty * precio
+  };
+}),
     ...totales,
     paso:0
   };
